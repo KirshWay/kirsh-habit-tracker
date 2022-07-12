@@ -1,3 +1,4 @@
+import CardHabit from "@components/card-habit";
 import AddIcon from "@mui/icons-material/Add";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
@@ -5,7 +6,7 @@ import { Backdrop, Box, Button, Fade, IconButton, Modal, TextField, Typography }
 import type { NextPage } from "next";
 import { useState } from "react";
 
-import style from "../assets/styles/modalWrapper.module.scss";
+import style from "../assets/styles/ModalWrapper.module.scss";
 
 const Home: NextPage = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -17,6 +18,12 @@ const Home: NextPage = () => {
           Create new habit
         </Button>
       </Box>
+
+      <Typography variant="h4" component="h2" sx={{ marginBottom: "4%" }}>
+        Your habits
+      </Typography>
+
+      <CardHabit title="Test1" timesWeek={3} color="primary" />
 
       <Modal
         open={open}

@@ -8,14 +8,17 @@
     "start": "next start",
     "lint:es": "next lint",
     "lint:es:fix": "next lint --fix",
+    "lint:style": "stylelint --ignore-path .gitignore src/**/*.scss --max-warnings 0",
+    "lint:style:fix": "stylelint --fix --ignore-path .gitignore src/**/*.scss",
     "check": "yarn run lint:es && yarn run type-check",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "prepush": "yarn run type-check"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.8.4",
-    "@mui/material": "^5.8.7",
+    "@mui/material": "^5.9.0",
     "@reduxjs/toolkit": "^1.8.3",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
@@ -28,8 +31,8 @@
   "devDependencies": {
     "@types/node": "^18.0.3",
     "@types/react": "18.0.15",
-    "@typescript-eslint/eslint-plugin": "^5.30.5",
-    "@typescript-eslint/parser": "^5.30.5",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
     "eslint": "^8.19.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-next": "12.2.2",
@@ -37,9 +40,29 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "sass": "^1.53.0",
+    "stylelint": "^14.9.1",
+    "stylelint-config-recommended": "^8.0.0",
+    "stylelint-config-standard": "^26.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-scss": "^4.3.0",
     "typescript": "4.7.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run prepush"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --ignore-path .gitignore . --ext .ts,.tsx --max-warnings 0"
+    ],
+    "*.{scss,css}": [
+      "stylelint --ignore-path .gitignore src/**/*.scss --max-warnings 0"
+    ]
   }
 }

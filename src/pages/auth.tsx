@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
-import styles from "../assets/styles/authForm.module.scss";
+import styles from "../assets/styles/AuthForm.module.scss";
 
 const Auth: NextPage = () => {
   const router = useRouter();

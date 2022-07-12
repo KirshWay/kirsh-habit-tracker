@@ -47,7 +47,7 @@ const BUTTONSOPTIONS = [
   },
 ];
 
-const MainLayout: React.VFC<LayoutType> = ({ children }) => {
+const MainLayout: React.FC<LayoutType> = ({ children }) => {
   const router = useRouter();
 
   const goAnotherPart = (key: string) => {

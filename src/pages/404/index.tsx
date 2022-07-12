@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActions, CardContent, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import type { NextPage } from "next";
 import Link from "next/link";
 
